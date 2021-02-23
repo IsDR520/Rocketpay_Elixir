@@ -7,7 +7,7 @@ use Mix.Config
 # Run `mix help test` for more information.
 config :rocketpay, Rocketpay.Repo,
   username: "postgres",
-  password: "dx619hbk",
+  password: "postgres",
   database: "rocketpay_test#{System.get_env("MIX_TEST_PARTITION")}",
   hostname: "localhost",
   port: 5432,
