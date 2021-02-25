@@ -6,7 +6,6 @@ defmodule RocketpayWeb.UsersController do
   
   def create(conn, params) do
     params
-    |>IO.inspect()
     |>Rocketpay.create_user()
     |>handle_response(conn)
   end
