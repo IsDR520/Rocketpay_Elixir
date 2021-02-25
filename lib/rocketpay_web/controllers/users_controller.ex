@@ -6,6 +6,7 @@ defmodule RocketpayWeb.UsersController do
   
   def create(conn, params) do
     params
+    |>IO.inspect()
     |>Rocketpay.create_user()
     |>handle_response(conn)
   end
@@ -17,9 +18,9 @@ defmodule RocketpayWeb.UsersController do
   end
 
   defp handle_response({:error, reason}, conn) do
-    conn
-    |>put_status(:bad_request)
-    |>put_view(RocketpayWeb.ErrorView)
-    |>render("400.json", result: reason)
-  end
+     conn
+   |>put_status(:bad_request)
+   |>put_view(RocketpayWeb.ErrorView)
+   |>render("400.json", result: reason)
+ end
 end
