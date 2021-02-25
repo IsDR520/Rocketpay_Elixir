@@ -7,14 +7,14 @@ defmodule Rocketpay.Numbers do
     test "when there is a file with then given a name, returns the sum of numbers" do
       response = Numbers.sum_from_file("numbers")
 
-      expected_response = {:ok, %{result: 37}}
+      expected_response = {:ok, % %{result: 37}}
       assert response == expected_response
 
     end
     test "when there is no file with then given a name, returns an errors" do
       response = Numbers.sum_from_file("numbers")
 
-      expected_response = {:error, % %{message: "invalid file!!"}}
+      expected_response = {:error, %{message: "invalid file!!"}}
       assert response == expected_response
 
     end

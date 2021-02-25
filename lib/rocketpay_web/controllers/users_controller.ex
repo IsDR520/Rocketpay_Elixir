@@ -19,6 +19,7 @@ defmodule RocketpayWeb.UsersController do
   defp handle_response({:error, reason}, conn) do
     conn
     |>put_status(:bad_request)
-    |>json(reason)
+    |>put_view(RocketpayWeb.ErrorView)
+    |>render("400.json", result: reason)
   end
 end
