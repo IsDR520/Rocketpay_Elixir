@@ -25,7 +25,7 @@ defmodule Rocketpay.Users.Create do
     Account.changeset(params)
   end
   
-  defp preload_data(repo, %{create_user: user}) do
+  defp preload_data(repo, user) do
     {:ok, repo.preload(user, :account)}
   end
   
