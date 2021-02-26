@@ -8,6 +8,6 @@ defmodule Rocketpay.Repo.Migrations.CreateAccountsTable do
       
       timestamps()
     end
-    create constraint(:accounts, :balance_must_be_positiv_or_zero, check: "balance >=0")
+    create constraint(:accounts, :balance_must_be_positive_or_zero, check: "balance >=0")
   end
 end
