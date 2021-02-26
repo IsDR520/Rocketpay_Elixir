@@ -21,7 +21,7 @@ defmodule Rocketpay.Accounts.Deposit do
   defp update_balance(repo, account, value) do
     account
     |>sum_values(value)
-    |>update_account(repo)
+    |>update_account(repo, account)
   end
   
   defp sum_values(%Account{balance: balance}, value) do
@@ -33,13 +33,13 @@ defmodule Rocketpay.Accounts.Deposit do
   defp handle_cast({:ok, value}, balance), do: Decimal.add(value, balance)
   defp handle_cast(:error, _balance), do: {:error, "Invalid deposit value"}
   
-  defp update_account({:error, _reason} = error, _repo ), do: error
+  defp update_account({:error, _reason} = error, _repo, _account), do: error
   
-  defp update_account(value, repo) do
+  defp update_account(value, repo, account) do
     params = %{balance: value}
     
-    params 
-    |>Account.changeset()
+    account 
+    |>Account.changeset(params)
     |>repo.update()
   end 
   
